@@ -83,7 +83,7 @@ export default function App() {
     } as Profile);
 
   return (
-    <div className="min-h-dvh bg-[#0b0f19] text-white" style={bg}>
+    <div className="w-full min-h-screen overflow-x-hidden bg-[#0b0f19] text-white" style={bg}>
       <NoiseCanvas />
 
       <div className="pointer-events-none fixed inset-0 z-[1] opacity-40 [background:linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:100%_24px]" />

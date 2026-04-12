@@ -132,7 +132,7 @@ export default function TerminalHero({ profile }: { profile: Profile }) {
         </div>
 
         <motion.div
-          className="relative"
+          className="relative min-w-0"
           style={{ rotateX: rx, rotateY: ry, transformStyle: 'preserve-3d' }}
           onMouseMove={(e) => {
             if (reduced) return;
@@ -149,7 +149,7 @@ export default function TerminalHero({ profile }: { profile: Profile }) {
         >
           <div className="absolute -inset-6 -z-10 rounded-3xl bg-cyan-500/10 blur-2xl" />
 
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_30px_80px_rgba(0,0,0,0.55)] backdrop-blur">
+          <div className="overflow-hidden max-w-full overflow-x-auto rounded-2xl border border-white/10 bg-white/5 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_30px_80px_rgba(0,0,0,0.55)] backdrop-blur">
             <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3">
               <div className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400/90" />
@@ -164,8 +164,8 @@ export default function TerminalHero({ profile }: { profile: Profile }) {
 
             <div className="relative">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(0,243,255,0.20),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(99,102,241,0.16),transparent_55%)]" />
-              <pre className="relative max-h-[360px] overflow-x-auto overflow-y-hidden p-5 text-[12px] leading-5 text-white/70 sm:text-[13px]">
-                <code className="font-mono">
+              <pre className="relative max-h-[360px] overflow-x-auto overflow-y-hidden p-5 text-[12px] leading-5 text-white/70 sm:text-[13px] whitespace-pre-wrap break-words">
+                <code className="font-mono whitespace-pre-wrap break-words">
                   <span className="text-white/45">// profile loader</span>
                   {'\n'}
                   <span className="text-cyan-200">{typed}</span>
