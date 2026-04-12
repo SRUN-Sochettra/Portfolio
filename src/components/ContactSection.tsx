@@ -19,7 +19,8 @@ export default function ContactSection({ profile }: { profile: Profile }) {
     setError(null);
 
     try {
-      const res = await fetch('http://localhost:8080/api/contact_messages', {
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+      const res = await fetch(`${baseUrl}/api/contact_messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
@@ -121,7 +122,7 @@ export default function ContactSection({ profile }: { profile: Profile }) {
 
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="text-xs text-white/45">
-                  <span className="font-mono">POST</span> http://localhost:8080/api/contact_messages
+                  <span className="font-mono">POST</span> {import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/contact_messages
                 </div>
 
                 <button

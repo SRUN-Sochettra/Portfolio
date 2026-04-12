@@ -43,10 +43,11 @@ export default function App() {
 
   const fetchAll = async () => {
     try {
+      const baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
       const [pRes, sRes, prRes] = await Promise.all([
-        fetch('http://localhost:8080/api/profile'),
-        fetch('http://localhost:8080/api/skills'),
-        fetch('http://localhost:8080/api/projects'),
+        fetch(`${baseUrl}/api/profile`),
+        fetch(`${baseUrl}/api/skills`),
+        fetch(`${baseUrl}/api/projects`),
       ]);
       const [p, s, pr] = await Promise.all([pRes.json(), sRes.json(), prRes.json()]);
       setProfile(p);
