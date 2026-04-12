@@ -162,9 +162,9 @@ export default function TerminalHero({ profile }: { profile: Profile }) {
               <div className="text-[11px] text-white/45">UTF-8</div>
             </div>
 
-            <div className="relative">
+            <div className="relative max-h-[360px] overflow-y-auto">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(0,243,255,0.20),transparent_45%),radial-gradient(circle_at_80%_60%,rgba(99,102,241,0.16),transparent_55%)]" />
-              <pre className="relative max-h-[360px] overflow-x-auto overflow-y-hidden p-5 text-[12px] leading-5 text-white/70 sm:text-[13px] whitespace-pre-wrap break-words">
+              <pre className="relative h-auto overflow-x-auto px-5 pt-5 pb-8 text-[12px] leading-5 text-white/70 sm:text-[13px] whitespace-pre-wrap break-words">
                 <code className="font-mono whitespace-pre-wrap break-words">
                   <span className="text-white/45">// profile loader</span>
                   {'\n'}
