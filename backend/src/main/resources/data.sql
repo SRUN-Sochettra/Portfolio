@@ -14,12 +14,18 @@ INSERT INTO portfolio_skill (id, category, name, level, highlight, note, sort) V
 (7, 'Backend', 'MyBatis', 70, false, NULL, 7)
 ON CONFLICT (id) DO NOTHING;
 
-SELECT setval('portfolio_skill_id_seq', (SELECT MAX(id) FROM portfolio_skill));
+DO $$ 
+BEGIN 
+    PERFORM setval('portfolio_skill_id_seq', (SELECT MAX(id) FROM portfolio_skill)); 
+END $$;
 
 -- Projects
 INSERT INTO portfolio_project (id, title, subtitle, description, tech, featured, sort) VALUES
-(1, 'Staff Management System', NULL, 'A comprehensive staff management system with automated ID generation, tracking, and management via a Java-based application with PostgreSQL backend.', '["Java", "Spring Boot", "PostgreSQL", "MyBatis"]', true, 1),
-(2, 'Stock Management System', NULL, 'A stock management backend architecture ensuring reliable tracking and updates, built with robust database principles.', '["Java", "Spring Boot", "PostgreSQL", "MyBatis"]', false, 2)
+(1, 'Staff Management System', NULL, 'A comprehensive staff management system with automated ID generation, tracking, and management via a Java-based application with PostgreSQL backend.', '["Java", "Spring Boot", "PostgreSQL", "MyBatis"]'::jsonb, true, 1),
+(2, 'Stock Management System', NULL, 'A stock management backend architecture ensuring reliable tracking and updates, built with robust database principles.', '["Java", "Spring Boot", "PostgreSQL", "MyBatis"]'::jsonb, false, 2)
 ON CONFLICT (id) DO NOTHING;
 
-SELECT setval('portfolio_project_id_seq', (SELECT MAX(id) FROM portfolio_project));
+DO $$ 
+BEGIN 
+    PERFORM setval('portfolio_project_id_seq', (SELECT MAX(id) FROM portfolio_project)); 
+END $$;
