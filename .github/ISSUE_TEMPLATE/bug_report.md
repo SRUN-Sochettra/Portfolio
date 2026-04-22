@@ -1,4 +1,4 @@
-<![CDATA[---
+---
 name: "🐛 Bug Report"
 about: Report a bug or unexpected behavior
 title: "[BUG] "
@@ -47,4 +47,4 @@ Paste relevant error logs or stack traces here.
 ## Additional Context
 
 Add any other context about the problem here.
-]]>
+

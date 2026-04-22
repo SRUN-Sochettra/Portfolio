@@ -1,4 +1,4 @@
-<![CDATA[# Contributing Guide
+# Contributing Guide
 
 Thank you for considering a contribution to this project. This document outlines the conventions and processes that keep the codebase clean and maintainable.
 
@@ -120,4 +120,4 @@ Use the provided issue templates:
 ## License
 
 By contributing, you agree that your contributions will be licensed under the [MIT License](./LICENSE).
-]]>
+

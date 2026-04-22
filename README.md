@@ -1,4 +1,4 @@
-<![CDATA[<div align="center">
+<div align="center">
 
 ```
 ╔══════════════════════════════════════════════════════╗
@@ -247,4 +247,4 @@ Copyright (c) 2026 Srun Sochettra
 ```
 
 </div>
-]]>
+

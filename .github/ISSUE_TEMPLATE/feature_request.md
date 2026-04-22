@@ -1,4 +1,4 @@
-<![CDATA[---
+---
 name: "✨ Feature Request"
 about: Suggest a new feature or enhancement
 title: "[FEATURE] "
@@ -36,4 +36,4 @@ If applicable, add mockups, wireframes, or examples from other projects.
 ## Additional Context
 
 Add any other context, references, or screenshots about the feature request.
-]]>
+

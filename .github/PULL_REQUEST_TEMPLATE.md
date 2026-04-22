@@ -1,4 +1,4 @@
-<![CDATA[## Summary
+## Summary
 
 <!-- Provide a brief description of the changes in this PR. -->
 
@@ -51,4 +51,4 @@
 - [ ] I have updated documentation where necessary
 - [ ] I have added/updated tests where applicable
 - [ ] This PR targets the `main` branch
-]]>
+
