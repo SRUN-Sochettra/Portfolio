@@ -1,0 +1,12 @@
+server.port=${PORT:8080}
+spring.datasource.url=${DATABASE_URL}
+spring.datasource.username=${DATABASE_USERNAME}
+spring.datasource.password=${DATABASE_PASSWORD}
+spring.jpa.hibernate.ddl-auto=update
+spring.sql.init.mode=always
+spring.jpa.properties.hibernate.format_sql=true
+
+# Set these environment variables before running:
+# DATABASE_URL=jdbc:postgresql://your-host/your-db?sslmode=require
+# DATABASE_USERNAME=your_username
+# DATABASE_PASSWORD=your_password
