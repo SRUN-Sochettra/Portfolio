@@ -7,7 +7,7 @@
 ║          ─────────────────────────                   ║
 ║          P O R T F O L I O                           ║
 ║                                                      ║
-║          full-stack  ·  engineered  ·  deployed       ║
+║          full-stack  ·  engineered  ·  deployed      ║
 ║                                                      ║
 ╚══════════════════════════════════════════════════════╝
 ```
@@ -36,23 +36,23 @@ Personal full-stack portfolio of **Srun Sochettra**. Engineered with Java Spring
 ┌─────────────────────────────────────────────────────────────────────┐
 │                          C L I E N T                                │
 │  ┌───────────────────────────────────────────────────────────────┐  │
-│  │  React 19  ·  TypeScript  ·  Vite 7  ·  Tailwind CSS v4     │  │
-│  │  Framer Motion  ·  Lucide Icons  ·  React Router v7          │  │
+│  │  React 19  ·  TypeScript  ·  Vite 7  ·  Tailwind CSS v4       │  │
+│  │  Framer Motion  ·  Lucide Icons  ·  React Router v7           │  │
 │  └──────────────────────────┬────────────────────────────────────┘  │
-│                             │ HTTPS / JSON                         │
-│                             ▼                                      │
+│                             │ HTTPS / JSON                          │
+│                             ▼                                       │
 │  ┌───────────────────────────────────────────────────────────────┐  │
 │  │                    S E R V E R                                │  │
 │  │  ┌─────────────────────────────────────────────────────────┐  │  │
 │  │  │  Spring Boot 3.2  ·  Java 21  ·  Spring MVC             │  │  │
-│  │  │  Spring Data JPA  ·  Lombok  ·  Jakarta Validation       │  │  │
-│  │  │  OpenAPI / Swagger UI  ·  Global Exception Handler       │  │  │
-│  │  └────────────────────────┬──────────────────────────────────┘  │  │
-│  │                           │ JDBC / HikariCP                    │  │
-│  │                           ▼                                    │  │
+│  │  │  Spring Data JPA  ·  Lombok  ·  Jakarta Validation      │  │  │
+│  │  │  OpenAPI / Swagger UI  ·  Global Exception Handler      │  │  │
+│  │  └────────────────────────┬────────────────────────────────┘  │  │
+│  │                           │ JDBC / HikariCP                   │  │
+│  │                           ▼                                   │  │
 │  │  ┌─────────────────────────────────────────────────────────┐  │  │
 │  │  │  PostgreSQL 16  (Neon Serverless / Local Docker)        │  │  │
-│  │  │  Tables: profiles · projects · skills · contact_messages │  │  │
+│  │  │  Tables: profiles · projects · skills · contact_messages│  │  │
 │  │  └─────────────────────────────────────────────────────────┘  │  │
 │  └───────────────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────┘
@@ -75,12 +75,12 @@ Personal full-stack portfolio of **Srun Sochettra**. Engineered with Java Spring
 
 All endpoints are prefixed with `/api`. Interactive documentation is available via **Swagger UI** at `/swagger-ui.html` when the backend is running.
 
-| Method | Endpoint | Description | Status Codes |
-|--------|----------|-------------|--------------|
-| `GET` | `/api/profile` | Retrieve portfolio owner's profile | `200` · `404` |
-| `GET` | `/api/projects` | List all projects (sorted by display order) | `200` |
-| `GET` | `/api/skills` | List all skills (sorted by display order) | `200` |
-| `POST` | `/api/contact_messages` | Submit a visitor contact message | `201` · `400` |
+| Method | Endpoint                | Description                                 | Status Codes  |
+|--------|-------------------------|---------------------------------------------|---------------|
+| `GET`  | `/api/profile`          | Retrieve portfolio owner's profile          | `200` · `404` |
+| `GET`  | `/api/projects`         | List all projects (sorted by display order) | `200`         |
+| `GET`  | `/api/skills`           | List all skills (sorted by display order)   | `200`         |
+| `POST` | `/api/contact_messages` | Submit a visitor contact message            | `201` · `400` |
 
 **Request Example — Submit Contact Message:**
 ```json
@@ -135,11 +135,11 @@ Portfolio/
 
 ### Prerequisites
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| Java | 21+ | Backend runtime |
-| Node.js | 20+ | Frontend toolchain |
-| Docker | Latest | Local PostgreSQL |
+| Tool    | Version | Purpose            |
+|---------|---------|--------------------|
+| Java    | 21+     | Backend runtime    |
+| Node.js | 20+     | Frontend toolchain |
+| Docker  | Latest  | Local PostgreSQL   |
 
 ### 1. Clone & Configure
 
@@ -204,23 +204,23 @@ npm run dev
 
 ## `> STACK.tech_breakdown`
 
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| **Language** | Java | 21 |
-| **Framework** | Spring Boot | 3.2.4 |
-| **ORM** | Spring Data JPA | — |
-| **Validation** | Jakarta Bean Validation | — |
-| **API Docs** | SpringDoc OpenAPI | 2.5.0 |
-| **Frontend** | React | 19 |
-| **Build Tool** | Vite | 7 |
-| **Styling** | Tailwind CSS | v4 |
-| **Animation** | Framer Motion | 12 |
-| **Routing** | React Router | v7 |
-| **Database** | PostgreSQL | 16 |
-| **Cloud DB** | Neon Serverless | — |
-| **CI/CD** | GitHub Actions | — |
-| **Frontend Deploy** | Vercel | — |
-| **Backend Deploy** | Render | — |
+| Layer               | Technology              | Version |
+|---------------------|-------------------------|---------|
+| **Language**        | Java                    | 21      |
+| **Framework**       | Spring Boot             | 3.2.4   |
+| **ORM**             | Spring Data JPA         | —       |
+| **Validation**      | Jakarta Bean Validation | —       |
+| **API Docs**        | SpringDoc OpenAPI       | 2.5.0   |
+| **Frontend**        | React                   | 19      |
+| **Build Tool**      | Vite                    | 7       |
+| **Styling**         | Tailwind CSS            | v4      |
+| **Animation**       | Framer Motion           | 12      |
+| **Routing**         | React Router            | v7      |
+| **Database**        | PostgreSQL              | 16      |
+| **Cloud DB**        | Neon Serverless         | —       |
+| **CI/CD**           | GitHub Actions          | —       |
+| **Frontend Deploy** | Vercel                  | —       |
+| **Backend Deploy**  | Render                  | —       |
 
 ---
 
