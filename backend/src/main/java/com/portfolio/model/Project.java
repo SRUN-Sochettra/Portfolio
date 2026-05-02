@@ -1,9 +1,9 @@
 package com.portfolio.model;
 
+import com.portfolio.converter.TechStackJsonConverter;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String description;
     
-    @JdbcTypeCode(SqlTypes.JSON)
+    @Convert(converter = TechStackJsonConverter.class)
     @Column(name = "tech", columnDefinition = "jsonb")
     private List<String> tech;
     
