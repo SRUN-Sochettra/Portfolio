@@ -10,7 +10,6 @@ import jakarta.persistence.Converter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Converter(autoApply = false)
@@ -45,6 +44,18 @@ public class TechStackJsonConverter implements AttributeConverter<List<String>, 
             return Collections.emptyList();
         }
         String trimmed = dbData.trim();
+
+        // Handles double-encoded payloads such as "\"[\\n \\\"Dart\\\", ...]\"".
+        if (trimmed.startsWith("\"") && trimmed.endsWith("\"")) {
+            try {
+                String unwrapped = MAPPER.readValue(trimmed, String.class);
+                if (unwrapped != null && !unwrapped.isBlank() && !unwrapped.equals(trimmed)) {
+                    return parseTechList(unwrapped);
+                }
+            } catch (JsonProcessingException ignored) {
+                // fall through
+            }
+        }
 
         try {
             return MAPPER.readValue(trimmed, LIST_OF_STRING);
@@ -106,11 +117,26 @@ public class TechStackJsonConverter implements AttributeConverter<List<String>, 
             return Collections.emptyList();
         }
         if (root.isArray()) {
-            return StreamSupport.stream(root.spliterator(), false)
-                    .map(n -> n.isTextual() ? n.asText() : n.asText())
-                    .map(String::trim)
-                    .filter(s -> !s.isEmpty())
-                    .collect(Collectors.toList());
+            List<String> flattened = new ArrayList<>();
+            StreamSupport.stream(root.spliterator(), false).forEach(node -> {
+                if (node.isTextual()) {
+                    String text = node.asText().trim();
+                    if (!text.isEmpty()) {
+                        List<String> nested = parseTechList(text);
+                        if (nested.size() > 1) {
+                            flattened.addAll(nested);
+                        } else {
+                            flattened.add(text);
+                        }
+                    }
+                } else {
+                    String value = node.asText().trim();
+                    if (!value.isEmpty()) {
+                        flattened.add(value);
+                    }
+                }
+            });
+            return flattened;
         }
         if (root.isObject()) {
             for (String key : NESTED_ARRAY_KEYS) {

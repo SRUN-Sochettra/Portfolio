@@ -40,4 +40,12 @@ class TechStackJsonConverterTest {
                 List.of("Java", "Spring Boot"),
                 TechStackJsonConverter.parseTechList("Java, Spring Boot"));
     }
+
+    @Test
+    void parseDoubleEncodedJsonArrayString() {
+        String encoded = "\"[\\n \\\"Dart\\\",\\n \\\"Flutter\\\",\\n \\\"Provider\\\"]\"";
+        assertEquals(
+                List.of("Dart", "Flutter", "Provider"),
+                TechStackJsonConverter.parseTechList(encoded));
+    }
 }
