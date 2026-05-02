@@ -70,6 +70,20 @@ class PortfolioServiceTest {
     }
 
     @Test
+    void getAllProjects_emptyTechUsesFallbackForKnownId() {
+        Project p = new Project();
+        p.setId(2);
+        p.setTitle("Disconime");
+        p.setTech(List.of());
+        when(projectRepository.findAllByOrderBySortAscIdAsc()).thenReturn(List.of(p));
+
+        List<Project> result = portfolioService.getAllProjects();
+
+        assertThat(result).hasSize(1);
+        assertThat(result.get(0).getTech()).containsExactly("Dart", "Flutter", "Provider", "GoRouter", "Jikan API");
+    }
+
+    @Test
     void getAllSkills_returnsSortedList() {
         Skill s1 = new Skill();
         s1.setName("Java");

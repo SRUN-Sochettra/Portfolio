@@ -10,6 +10,8 @@ import jakarta.persistence.Converter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.StreamSupport;
 
 @Converter(autoApply = false)
@@ -18,6 +20,8 @@ public class TechStackJsonConverter implements AttributeConverter<List<String>, 
     private static final ObjectMapper MAPPER = new ObjectMapper();
     private static final TypeReference<List<String>> LIST_OF_STRING = new TypeReference<>() {};
     private static final String[] NESTED_ARRAY_KEYS = {"tech", "stack", "tags", "tools", "skills"};
+    private static final Pattern JSON_STRING_TOKEN = Pattern.compile("\"((?:[^\"\\\\]|\\\\.)*)\"");
+
 
     @Override
     public String convertToDatabaseColumn(List<String> attribute) {
@@ -82,7 +86,42 @@ public class TechStackJsonConverter implements AttributeConverter<List<String>, 
             return splitPostgresArrayElements(inner);
         }
 
+        // Pasted/neon typo—invalid JSON arrays missing commas, e.g. [\n "A"\n "B"\n].
+        List<String> recoveredBracket = recoverQuotedStringsBetweenBrackets(trimmed);
+        if (!recoveredBracket.isEmpty()) {
+            return recoveredBracket;
+        }
+
         return splitCommaSeparated(trimmed);
+    }
+
+    /** Extract "..." literals between the first '[' and last ']' (best-effort, non-JSON). */
+    static List<String> recoverQuotedStringsBetweenBrackets(String s) {
+        if (s == null || s.isBlank()) {
+            return Collections.emptyList();
+        }
+        int lb = s.indexOf('[');
+        int rb = s.lastIndexOf(']');
+        if (lb < 0 || rb <= lb) {
+            return Collections.emptyList();
+        }
+        String inner = s.substring(lb + 1, rb);
+        List<String> out = new ArrayList<>();
+        Matcher m = JSON_STRING_TOKEN.matcher(inner);
+        while (m.find()) {
+            String v = jsonUnescapeQuotedContent(m.group(1)).trim();
+            if (!v.isEmpty()) {
+                out.add(v);
+            }
+        }
+        return out.isEmpty() ? Collections.emptyList() : List.copyOf(out);
+    }
+
+    private static String jsonUnescapeQuotedContent(String escaped) {
+        if (escaped == null || escaped.isEmpty()) {
+            return "";
+        }
+        return escaped.replace("\\\"", "\"").replace("\\\\", "\\");
     }
 
     private static List<String> splitPostgresArrayElements(String inner) {

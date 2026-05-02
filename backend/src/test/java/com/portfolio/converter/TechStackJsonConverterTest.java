@@ -48,4 +48,18 @@ class TechStackJsonConverterTest {
                 List.of("Dart", "Flutter", "Provider"),
                 TechStackJsonConverter.parseTechList(encoded));
     }
+
+    @Test
+    void parseMalformedArrayMissingCommas() {
+        String pasted = "[\n \"Dart\"\n \"Flutter\"\n \"Provider\"\n]";
+        assertEquals(
+                List.of("Dart", "Flutter", "Provider"),
+                TechStackJsonConverter.parseTechList(pasted));
+    }
+
+    @Test
+    void recoverQuotedStringsBetweenBrackets_handlesExtraPrefix() {
+        String s = "x [ \"A\" \"B\" ] tail";
+        assertEquals(List.of("A", "B"), TechStackJsonConverter.recoverQuotedStringsBetweenBrackets(s));
+    }
 }
