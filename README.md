@@ -27,6 +27,8 @@
 ## `> SYSTEM.overview`
 
 Personal full-stack portfolio of **Srun Sochettra**. Engineered with Java Spring Boot, React, and PostgreSQL. Features a dark-mode glassmorphism UI, a production-grade REST API, and a serverless database layer.
+<img width="1536" height="1024" alt="portfolioCover" src="https://github.com/user-attachments/assets/55bc2a27-be87-45cb-86f5-b925fba6acf1" />
+
 
 ---
 
